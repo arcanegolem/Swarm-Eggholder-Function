@@ -25,15 +25,23 @@ class Swarm ():
         fig = plt.figure(figsize = (12, 5))
 
         # original func
-        axes_orig = fig.add_subplot(1, 2, 1, projection = "3d")
+        axes_orig = fig.add_subplot(1, 3, 1, projection = "3d")
         axes_orig.plot_surface(self.x, self.y, Swarm.z(self.x, self.y), cmap=cm.ocean, alpha = 0.5)
         axes_orig.set_title("Eggholder")
 
         # func with dots
-        axes = fig.add_subplot(1, 2, 2, projection = "3d")
+        axes = fig.add_subplot(1, 3, 2, projection = "3d")
         axes.plot_surface(self.x, self.y, Swarm.z(self.x, self.y), cmap=cm.coolwarm, alpha = 0.5)
         axes.set_title("Eggholder with dots")
-        axes.scatter(array_of_X, array_of_Y, array_of_Z, c = "red", alpha = 0.5)
+        axes.scatter(array_of_X, array_of_Y, array_of_Z, c = "red", alpha = 0.7)
+
+        # func from above
+        axes_above = fig.add_subplot(1, 3, 3, projection = "3d")
+        axes_above.axis("off")
+        axes_above.plot_surface(self.x, self.y, Swarm.z(self.x, self.y), cmap=cm.coolwarm, alpha = 0.5)
+        axes_above.set_title("Eggholder with dots from above")
+        axes_above.scatter(array_of_X, array_of_Y, array_of_Z, c = "red", alpha = 0.4)
+        axes_above.view_init(90, 0)
 
         elevation = 20
         rotation_speed = 5
