@@ -26,8 +26,8 @@ class Swarm ():
 
         # original func
         axes_orig = fig.add_subplot(1, 3, 1, projection = "3d")
-        axes_orig.plot_surface(self.x, self.y, Swarm.z(self.x, self.y), cmap=cm.ocean, alpha = 0.5)
-        axes_orig.set_title("Eggholder")
+        axes_orig.plot_surface(self.x, self.y, Swarm.z(self.x, self.y), cmap=cm.gnuplot, alpha = 0.5)
+        axes_orig.set_title("Eggholder") 
 
         # func with dots
         axes = fig.add_subplot(1, 3, 2, projection = "3d")
@@ -39,14 +39,14 @@ class Swarm ():
         axes_above = fig.add_subplot(1, 3, 3, projection = "3d")
         axes_above.axis("off")
         axes_above.plot_surface(self.x, self.y, Swarm.z(self.x, self.y), cmap=cm.coolwarm, alpha = 0.5)
-        axes_above.set_title("Eggholder with dots from above")
+        axes_above.set_title("Eggholder with dots, above perspective")
         axes_above.scatter(array_of_X, array_of_Y, array_of_Z, c = "red", alpha = 0.4)
         axes_above.view_init(90, 0)
 
         elevation = 20
-        rotation_speed = 5
+        rotation_speed = 3
 
-        for angle in range(0, 360, 3):
+        for angle in range(0, 360, rotation_speed):
             axes_orig.view_init(elevation, angle)
             axes.view_init(elevation, angle)
             plt.draw()
